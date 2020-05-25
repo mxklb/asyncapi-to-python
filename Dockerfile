@@ -5,10 +5,10 @@ RUN [ -f "/usr/bin/apt-get" ] && apt-get update && apt-get install -y wget unzip
 RUN mkdir -p /tmp/python-paho-template
 
 # Download and setup python-paho-template ..
-RUN wget https://github.com/asyncapi/python-paho-template/archive/v0.2.2.zip && \
-    unzip v0.2.2.zip && \
-    mv python-paho-template-0.2.2/* /tmp/python-paho-template/ && \
-    rm -r python-paho-template-* && rm v0.2.2.zip
+RUN wget https://github.com/asyncapi/python-paho-template/archive/v0.2.4.zip && \
+    unzip v0.2.4.zip && \
+    mv python-paho-template-0.2.4/* /tmp/python-paho-template/ && \
+    rm -r python-paho-template-* && rm v0.2.4.zip
 
 RUN cd /tmp/python-paho-template && npm install -g @asyncapi/generator
 
