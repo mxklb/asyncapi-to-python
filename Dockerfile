@@ -1,14 +1,17 @@
 FROM node:alpine
 RUN [ -f "/usr/bin/apt-get" ] && apt-get update && apt-get install -y wget unzip git || apk add wget unzip git
 
+ARG VERSION=0.2.4
+ENV PPT_VERSION=$VERSION
+
 # Create folder for python-paho-template ..
 RUN mkdir -p /tmp/python-paho-template
 
 # Download and setup python-paho-template ..
-RUN wget https://github.com/asyncapi/python-paho-template/archive/v0.2.4.zip && \
-    unzip v0.2.4.zip && \
-    mv python-paho-template-0.2.4/* /tmp/python-paho-template/ && \
-    rm -r python-paho-template-* && rm v0.2.4.zip
+RUN wget https://github.com/asyncapi/python-paho-template/archive/v$PPT_VERSION.zip && \
+    unzip v$PPT_VERSION.zip && \
+    mv python-paho-template-$PPT_VERSION/* /tmp/python-paho-template/ && \
+    rm -r python-paho-template-* && rm v$PPT_VERSION.zip
 
 RUN cd /tmp/python-paho-template && npm install -g @asyncapi/generator
 

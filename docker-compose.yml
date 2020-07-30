@@ -1,9 +1,14 @@
-asyncapi-to-python:
-  build: ./
-  container_name: asyncapi-to-python
-  environment:
-    - NODE_ENV=production
-  command: ["${APIYAML}"]
-  volumes:
-    - ${APIPATH}:/tmp/python-paho-template/api
-    - ${CODEPATH}:/tmp/python-paho-template/code
+version: '2'
+services:
+  asyncapi-to-python:
+    build: 
+      context: ./
+      args:
+        - VERSION=${VERSION}
+    container_name: asyncapi-to-python
+    environment:
+      - NODE_ENV=production
+    command: ["${APIYAML}"]
+    volumes:
+      - ${APIPATH}:/tmp/python-paho-template/api
+      - ${CODEPATH}:/tmp/python-paho-template/code
