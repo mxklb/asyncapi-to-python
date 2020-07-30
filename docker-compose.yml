@@ -8,7 +8,7 @@ services:
     container_name: asyncapi-to-python
     environment:
       - NODE_ENV=production
-    command: ["${APIYAML}"]
+    command: ["${APIYAML}", "${VERSION}"]
     volumes:
       - ${APIPATH}:/tmp/python-paho-template/api
       - ${CODEPATH}:/tmp/python-paho-template/code
