@@ -8,9 +8,11 @@ Configure/Set the following environment variables within the *.env* file:
     APIPATH=./api
     APIYAML=async-api.yaml
     CODEPATH=./output
+    VERSION=0.2.4
 
 `APIPATH` defines where to find a given `APIYAML` file. `CODEPATH` defines where
-to output the generated python code.
+to output the generated python code. Set `VERSION=0.2.4` to define the 
+python-paho-template release to be used.
 
 ## Generate python code
 To generate python code from a given *api/async-api.yaml* file, just call
