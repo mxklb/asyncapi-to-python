@@ -1,7 +1,7 @@
 FROM node:alpine
 RUN [ -f "/usr/bin/apt-get" ] && apt-get update && apt-get install -y wget unzip git || apk add wget unzip git
 
-ARG VERSION=0.2.4
+ARG VERSION=0.2.10
 ENV PPT_VERSION=$VERSION
 
 # Create folder for python-paho-template ..
