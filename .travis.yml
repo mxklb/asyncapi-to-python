@@ -1,11 +1,17 @@
 language: python
 
+python:
+  - "3.8"
+
+install:
+  - pip3 install paho-mqtt
+
 services:
   - docker
 
 script:
   - docker-compose up --build
   - ls -la ./output
-  - rm -f ./output/config-template.ini
+  - rm ./output/config-template.ini
   - mv config.ini ./output/config.ini
   - cd output && python3 main.py
