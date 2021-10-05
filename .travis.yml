@@ -4,5 +4,6 @@ services:
   - docker
 
 script:
-  - echo "Hello World"
   - docker-compose up --build
+  - ls -la ./output
+  - python3 main.py
