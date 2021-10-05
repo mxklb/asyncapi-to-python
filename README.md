@@ -1,6 +1,6 @@
 # AsyncApi to Python
 This uses [asyncapi/python-paho-template](https://github.com/asyncapi/python-paho-template)
-to create python code snippets from a given *async-api.yaml* via docker-compose.
+to create python code from a given *async-api.yaml* via docker-compose.
 
 ## How to use this
 Configure/Set the following environment variables within the *.env* file:
