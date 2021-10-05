@@ -10,7 +10,8 @@ services:
   - docker
 
 script:
-  - docker-compose up --build
+  - mkdir output && chmod -R 777 output
+  - export USERID=$(id -u $(whoami)) && export GROUP=$(id -g $(whoami)) && docker-compose up --build
   - ls -la ./output
   - rm ./output/config-template.ini
   - mv config.ini ./output/config.ini
