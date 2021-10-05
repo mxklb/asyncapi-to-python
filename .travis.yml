@@ -15,4 +15,4 @@ script:
   - ls -la ./output
   - rm ./output/config-template.ini
   - mv config.ini ./output/config.ini
-  - cd output && $(python3 main.py &) && sleep 15 && exit 0
+  - cd output && timeout 15 python3 main.py && if [ $? -eq 124 ]; then exit 0; fi
