@@ -15,4 +15,4 @@ script:
   - ls -la ./output
   - rm ./output/config-template.ini
   - mv config.ini ./output/config.ini
-  - cd output && python3 main.py
+  - cd output && timeout 15 python3 main.py
