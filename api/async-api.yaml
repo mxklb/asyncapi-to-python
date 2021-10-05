@@ -1,36 +1,41 @@
-asyncapi: '2.1.0'
+---
+asyncapi: "2.0.0"
+id: "urn:com:solace"
 info:
-  title: Streetlights API
-  version: '1.0.0'
-  description: |
-    The Smartylighting Streetlights API allows you
-    to remotely manage the city lights.
-  license:
-    name: Apache 2.0
-    url: 'https://www.apache.org/licenses/LICENSE-2.0'
-servers:
-  mosquitto:
-    url: mqtt://test.mosquitto.org
-    protocol: mqtt
+  description: "Temperature Readings"
+  title: "Temperature Readings"
+  version: "1.0.0"
+  x-java-package: "com.solace.scs.gen"
+  x-spring-cloud-stream-version: "3.0.1.RELEASE"
+  x-artifact-id: "scs-temp"
+  x-group-id: "com.solace"
 channels:
-  light/measured:
-    publish:
-      summary: Inform about environmental lighting conditions for a particular streetlight.
-      operationId: onLightMeasured
+  sensor/temperature/fahrenheit:
+    subscribe:
+      x-scs-function-name: sub
       message:
-        name: LightMeasured
-        payload:
-          type: object
-          properties:
-            id:
-              type: integer
-              minimum: 0
-              description: Id of the streetlight.
-            lumens:
-              type: integer
-              minimum: 0
-              description: Light intensity measured in lumens.
-            sentAt:
-              type: string
-              format: date-time
-              description: Date and time when the message was sent.
+        $ref: "#/components/messages/SensorReadingMessage"
+    publish:
+      x-scs-function-name: pub
+      message:
+        $ref: "#/components/messages/SensorReadingMessage"
+components:
+  schemas:
+    SensorReading:
+      title: SensorReading
+      type: object
+      properties:
+        sensorId:
+          type: string
+        temperature:
+          type: number
+        baseUnit:
+          enum: [
+            CELSIUS,
+            FAHRENHEIT
+          ]
+  messages:
+    SensorReadingMessage:
+      name: sensorReadingMessage
+      payload:
+        $ref: "#/components/schemas/SensorReading"
