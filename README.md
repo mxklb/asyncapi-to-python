@@ -20,3 +20,9 @@ To generate python code from a given *api/async-api.yaml* file, just call
     docker-compose up --build
 
 The generated python code can be found in the given *output* directory.
+
+## Automated tests
+
+Build Status: [![Build Status](https://app.travis-ci.com/mxklb/asyncapi-to-python.svg?branch=master)](https://app.travis-ci.com/mxklb/asyncapi-to-python)
+
+Travis CI generates code from `$APIYAML` and runs `main.py` against [test.mosquitto.org:1883](http://test.mosquitto.org) using `python3`.
