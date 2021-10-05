@@ -6,4 +6,6 @@ services:
 script:
   - docker-compose up --build
   - ls -la ./output
-  - python3 main.py
+  - rm ./output/config-template.ini
+  - mv config.ini ./output/config.ini
+  - cd output && python3 main.py
