@@ -4,4 +4,5 @@ services:
   - docker
 
 script:
+  - echo "Hello World"
   - docker-compose up --build
